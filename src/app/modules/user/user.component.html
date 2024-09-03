@@ -1,0 +1,136 @@
+
+
+<div>
+    <p-table
+    [value]="(listUsers$ | async)"
+    #dt 
+    [lazy]="true"
+    [totalRecords]="(totalUser$ | async)"
+    [rows]="limit"
+    (onLazyLoad)="lazyLoad($event)"
+    [scrollable]="true"
+    class="recouv-list "
+    [tableStyle]="{ 'min-width': '30rem'}"
+    styleClass="p-datatable-gridlines p-datatable-sm"
+    [paginator]="true"
+>   
+    <ng-template pTemplate="caption">
+        <div class="container-fluid datas-wrapper-body">
+            <div class="row">
+                <div class="col-6">
+                        <div class="row">
+                            <div class="col-3">
+                                <input [formControl]="searchControl" placeholder="Rechercher par nom et prénom">
+                            </div>
+                        </div>
+                </div>
+                <div class="col-6">
+                    <button type="submit" class="btn btn-primary" (click)="addUser()">Ajouter</button>
+                </div>
+            </div>
+            <div *ngIf="message" class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>Enregistrement réussit</strong> d'un utilisateur
+                <button (click)="removeMessage()" type="submit" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
+            </div>
+        </div>
+    </ng-template>
+    <ng-template pTemplate="header">
+        <tr>
+            <th>Nom</th>
+            <th>Prenoms</th>
+            <th>Numéro</th>
+            <th>Descriptif de l'opération</th>
+            <th>Type pièce</th>
+            <th>Statut</th>
+            <th>Action</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-banqu>
+        <tr style="font-size: 12px;">
+            <td>{{ banqu.last_name }}</td>
+            <td>{{ banqu.first_name }}</td>
+            <td>{{ banqu.numero }}</td>
+            <td>{{ banqu.description }}</td>
+            <td>{{ banqu.type_piece }}</td>
+            <td>
+                <span *ngIf="banqu.is_connected == true" class="badge rounded-pill text-bg-success">connecté</span>
+                <span *ngIf="banqu.is_connected == false" class="badge rounded-pill text-bg-danger">Deconnecté</span>
+            </td>
+            <td>
+                <button type="submit" class="btn btn-primary" (click)="getUserById(banqu.id)">Detail</button>&nbsp;
+                <button type="submit" class="btn btn-warning" (click)="editUser(banqu.id)">Editer</button>&nbsp;
+                <button type="submit" class="btn btn-danger" (click)="deleteUser(banqu.id)">Supprimer</button>
+            </td>
+    
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="emptymessage">
+        <tr>
+            <td colspan="11"  style="text-align: center">
+                    <h4>Aucun résultat</h4>
+                    <img src="./assets/img/no-results.png" style="width: 100px;" alt="">
+            </td>
+          </tr>
+    </ng-template>
+</p-table>
+</div>
+
+
+<p-dialog header="Header" [modal]="true" [(visible)]="visibleAdd" [style]="{ width: '50rem' }">
+    <span class="p-text-secondary block mb-5">Ajout d'un utilisateur</span><br><br> 
+    <form [formGroup]="usersForm" (ngSubmit)="CreateUser()">
+        <div class="d-flex">
+            <div class="flex align-items-center gap-3 mb-3 mr-3">
+                <label class="font-semibold w-6rem">Nom</label>
+                <input pInputText formControlName="last_name_nomad" class="flex-auto" autocomplete="off" />
+            </div>
+            <div class="flex align-items-center gap-3 mb-5">
+                <label class="font-semibold w-6rem">Prénoms</label>
+                <input pInputText formControlName="first_name_nomad" class="flex-auto" autocomplete="off" />
+            </div>
+        </div>
+        <div class="flex justify-content-end gap-2">
+            <!-- <p-button label="Cancel" severity="secondary" (onClick)="visible = false" for="first_name_nomad"  for="last_name_nomad"/>-->
+            <p-button label="Save" type="submit" /> 
+        </div>
+    </form>
+</p-dialog>
+<p-dialog header="Header" [modal]="true" [(visible)]="visibleView" [style]="{ width: '50rem' }">
+    <div>
+        <div class="d-flex" *ngIf="userId$ | async as user; else loading">
+            <div>
+                <p>{{ user?.first_name_nomad }} {{ user?.last_name_nomad }}</p>
+                <!-- <p>{{ user?.msisdn_nomad }}</p> -->
+            </div>
+            <!-- <div>
+                <p>{{ user?.creation_date_nomad }}</p>
+                <p>{{ user?.motif_rejet }}</p>
+            </div>
+            <div>
+                <p>{{ user?.type_piece_nomad }}</p>
+            </div> -->
+        </div>
+        <ng-template #loading>
+            <p>Loading user details...</p>
+        </ng-template>
+    </div>
+</p-dialog>
+<p-dialog header="Header" [modal]="true" [(visible)]="visibleUpdate" [style]="{ width: '50rem' }">
+    <span class="p-text-secondary block mb-5">Update your information.</span><br>
+    <form [formGroup]="editUsersForm" (ngSubmit)="updateUser()">
+        <div class="d-flex">
+            <div class="flex align-items-center gap-3 mb-3 mr-3">
+                <label class="font-semibold w-6rem">Nom</label>
+                <input pInputText formControlName="last_name_nomad" class="flex-auto" autocomplete="off" />
+            </div>
+            <div class="flex align-items-center gap-3 mb-5">
+                <label class="font-semibold w-6rem">Prénoms</label>
+                <input pInputText formControlName="first_name_nomad" class="flex-auto" autocomplete="off" />
+            </div>
+        </div>
+        <div class="flex justify-content-end gap-2">
+            <!-- <p-button label="Cancel" severity="secondary" (onClick)="visible = false" for="first_name_nomad"  for="last_name_nomad"/>-->
+            <p-button label="Save" type="submit" /> 
+        </div>
+    </form>
+</p-dialog>

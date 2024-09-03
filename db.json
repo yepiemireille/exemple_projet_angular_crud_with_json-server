@@ -1,0 +1,100 @@
+{
+  "user": [
+    {
+      "id": "7a1d",
+      "creation_date": "2024-05-01 05:00:20",
+      "first_name": "MAMADOU",
+      "last_name": "ZOUNGRANA",
+      "description": " Nom NOMAD et Nom IDBASE différents.",
+      "numero": "0507318340",
+      "type_piece": "Carte consulaire",
+      "is_connected": false,
+      "image":"",
+      "age":23
+    },
+    {
+      "id": "b4e5",
+      "creation_date": "2024-05-01 05:00:20",
+      "first_name": "kouassi",
+      "last_name": "keren",
+      "description": " Nom NOMAD et Nom IDBASE différents.",
+      "numero": "0507318340",
+      "type_piece": "Carte consulaire",
+      "is_connected": false,
+      "image":"",
+      "age":29
+    },
+    {
+      "id": "bd3b",
+      "creation_date": "2024-05-01 05:00:20",
+      "first_name": "karamoko",
+      "last_name": "kere",
+      "description": " Nom NOMAD et Nom IDBASE différents.",
+      "numero": "0507318340",
+      "type_piece": "Carte consulaire",
+      "is_connected": false,
+      "image":"",
+      "age":19
+    },
+    {
+      "id": "c2e3",
+      "creation_date": "2024-05-01 05:00:20",
+      "first_name": "Lucien",
+      "last_name": "Mahama",
+      "description": " Nom NOMAD et Nom IDBASE différents.",
+      "numero": "0507318340",
+      "type_piece": "Carte consulaire",
+      "is_connected": true,
+      "image":"",
+      "age":15
+    },
+    {
+      "id": "1ae6",
+      "creation_date": "2024-05-01 05:00:20",
+      "first_name": "koffi téodore",
+      "last_name": "kangua",
+      "description": " Nom NOMAD et Nom IDBASE différents.",
+      "numero": "0507318340",
+      "type_piece": "Carte consulaire",
+      "is_connected": true,
+      "image":"",
+      "age":12
+    },
+    {
+      "id": "c2e3",
+      "creation_date": "2024-05-01 05:00:20",
+      "first_name": "adama",
+      "last_name": "sigué",
+      "description": " Nom NOMAD et Nom IDBASE différents.",
+      "numero": "0507318340",
+      "type_piece": "Carte consulaire",
+      "is_connected": false,
+      "image":"",
+      "age":72
+    },
+    {
+      "id": "7e85",
+      "creation_date": "2024-05-01 05:00:20",
+      "first_name": "Aristide",
+      "last_name": "Gnazale",
+      "description": " Nom NOMAD et Nom IDBASE différents.",
+      "numero": "0768314888",
+      "type_piece": "CNI",
+      "is_connected": false,
+      "image":"http://10.242.68.102/getFile/filer.php?id=32332938",
+      "age":24
+    },
+    {
+      "id": "354f",
+      "creation_date": "2024-09-01 05:00:20",
+      "first_name": "Zouzou Oscar",
+      "last_name": "Goli",
+      "description": " Nom NOMAD et Nom IDBASE différents.",
+      "numero": "0768314888",
+      "type_piece": "CNI",
+      "is_connected": false,
+      "image": "http://10.242.68.102/getFile/filer.php?id=32332938",
+      "age":86
+    }
+  ]
+}
